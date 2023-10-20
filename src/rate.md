@@ -18,7 +18,7 @@ Aside from rewards distributions, the process of [early unminting](/early-unmint
 
 The formula used to calculate the rate of dVOI to VOI is:
 
-\\[\frac{circulating\ dVOI}{withdrawable\ VOI}  \\]
+\\[\frac{Circulating\ dVOI}{Withdrawable\ VOI}\\]
 
 Where: 
 
@@ -48,5 +48,5 @@ Where:
 
 - Return VOI: The amount of VOI the user receives for their burn deposit
 - Withdrawable VOI: The amount of withdrawable VOI before the dVOI burn
-- Burned: The amount of dVOI the user is burning/exchanging VOI
+- Burned: The amount of dVOI the user is burning/exchanging for VOI
 - Circulating dVOI: The previous circulating dVOI amount
