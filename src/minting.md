@@ -16,7 +16,7 @@ The dVOI token and protocol allows users to get exposure to these rewards, as dV
 
 On the Voi testnet, consensus rewards distributions currently take place weekly at a fixed time (Mondays.) 
 
-As such, a well designed delegation protocol needs a way to ensure that users claiming rewards have contributed meaningfully to the generation of said rewards.
+As such, a well designed delegation token needs a way to ensure that users claiming rewards have contributed meaningfully to the generation of said rewards.
 
 Without a dVOI vesting period, users could mint dVOI on the day of rewards distribution, wait for rewards to be distributed, and then burn back to VOI. This would be problematic, as they would not contribute to the online stake meaningfully over the week (and thus protocol consensus rewards), but only for a few hours.
 

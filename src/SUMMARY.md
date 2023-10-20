@@ -7,8 +7,8 @@
 
 # Process
 - [Minting](./minting.md)
-- [Early Unmint](./early-unmint.md)
 - [Burning](./burning.md)
+- [Early Unmint](./early-unmint.md)
 
 # Technical
 
