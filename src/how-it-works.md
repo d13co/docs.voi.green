@@ -14,4 +14,4 @@ As such, the rate of dVOI to VOI will start at 1:1 before any consensus rewards 
 
 The mechanism of minting is only way dVOI enters circulation. No dVOI is allocated to "the team", or any other such back-handed nonsense.
 
-Minting and burning dVOI does not incur any fees. The protocol takes fees from the distributed rewards.
+Minting and burning dVOI does not incur any fees. The protocol takes a percentage fee from the distributed rewards.
