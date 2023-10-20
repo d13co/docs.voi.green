@@ -1,6 +1,6 @@
 # How it Works
 
-The dVOI contract [escrow address](voi.observer/explorer/account/DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ/) participates in consensus and receives consensus rewards. Part of those rewards are proportional to the VOI staked. dVOI allows users who are unable to run a node to participate in the consensus rewards of the Voi Testnet network.
+The dVOI contract [escrow address](https://voi.observer/explorer/account/DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ/) participates in consensus and receives consensus rewards. Part of those rewards are proportional to the VOI staked. dVOI allows users who are unable to run a node to participate in the consensus rewards of the Voi Testnet network.
 
 To [mint dVOI](/minting.html), users can delegate their VOI to the contract will be allocated the equivalent dVOI according to the dVOI:VOI rate at the time of minting.
 
