@@ -6,7 +6,7 @@ src = "src"
 title = "dVOI Documentation - docs.voi.green"
 
 [output.html]
-default-theme = "navy"
+default-theme = "ayu"
 git-repository-url = "https://github.com/d13co/docs.voi.green"
 edit-url-template = "https://github.com/d13co/docs.voi.green/edit/main/{path}"
 site-url = "https://docs.voi.green"
