@@ -329,8 +329,13 @@
 </tbody></table>
 </div>
 <h2 id="box-storage"><a class="header" href="#box-storage">Box Storage</a></h2>
-<p>Boxes are used to store vesting dVOI per user.</p>
-<p>The box name is the user's address. The value is a concatenation of a uint32 timestamp of vesting, and a uint64 amount of VOI paid for the dVOI, which is used for early unmint refunds.</p>
+<p>Boxes are used to store users' vesting dVOI.</p>
+<p>The box name is the user's address. The value is a concatenation of:</p>
+<ul>
+<li>uint32 vesting timestamp</li>
+<li>uint64 dVOI amount</li>
+<li>uint64 and a uint64 amount of VOI paid. Used for early unmint refunds.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contract-abi"><a class="header" href="#contract-abi">Contract ABI</a></h1>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="audits"><a class="header" href="#audits">Audits</a></h1>

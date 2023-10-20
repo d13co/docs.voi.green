@@ -19,6 +19,10 @@ The global storage of the dVOI contract stores the following values:
 
 ## Box Storage
 
-Boxes are used to store vesting dVOI per user.
+Boxes are used to store users' vesting dVOI.
 
-The box name is the user's address. The value is a concatenation of a uint32 timestamp of vesting, and a uint64 amount of VOI paid for the dVOI, which is used for early unmint refunds.
+The box name is the user's address. The value is a concatenation of:
+
+- uint32 vesting timestamp
+- uint64 dVOI amount
+- uint64 and a uint64 amount of VOI paid. Used for early unmint refunds.
