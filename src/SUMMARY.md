@@ -14,7 +14,10 @@
 
 - [dVOI Rate](./rate.md)
 - [Fee Structure](./fees.md)
+
+# Contract Info
 - [Token and Contract Info](./info.md)
+- [Immutability](./immutability.md)
 - [Contract ABI](./abi.md)
 
 # Audits & Bug Bounty

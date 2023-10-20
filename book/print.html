@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">4.</strong> Burning</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">5.</strong> Early Unmint</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="rate.html"><strong aria-hidden="true">6.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">7.</strong> Fee Structure</a></li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">8.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">9.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">10.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html"><strong aria-hidden="true">11.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li><li class="chapter-item expanded "><a href="links.html"><strong aria-hidden="true">12.</strong> Links</a></li><li class="chapter-item expanded "><a href="contact.html"><strong aria-hidden="true">13.</strong> Contact</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">4.</strong> Burning</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">5.</strong> Early Unmint</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="rate.html"><strong aria-hidden="true">6.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">7.</strong> Fee Structure</a></li><li class="chapter-item expanded affix "><li class="part-title">Contract Info</li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">8.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="immutability.html"><strong aria-hidden="true">9.</strong> Immutability</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">10.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">11.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html"><strong aria-hidden="true">12.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li><li class="chapter-item expanded "><a href="links.html"><strong aria-hidden="true">13.</strong> Links</a></li><li class="chapter-item expanded "><a href="contact.html"><strong aria-hidden="true">14.</strong> Contact</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -263,20 +263,67 @@
 <li>Circulating dVOI: The previous circulating dVOI amount</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fee-structure"><a class="header" href="#fee-structure">Fee Structure</a></h1>
-<p>TODO - the rest of the docs are TODO from here on. Thanks for your attention &lt;3</p>
-<p>- D13</p>
+<h2 id="mint--burn-fees"><a class="header" href="#mint--burn-fees">Mint &amp; Burn fees</a></h2>
+<p>Minting, burning and early unmninting do not incur any platform fees. The only fees you will be charged during these operations are network transaction fees.</p>
+<p>The mint and burn rates will be at the dVOI/VOI rate at the time of transaction - see the <a href="/rate.html">Rate section</a> for an explanation.</p>
+<p><em>Note: This is subject to change while the protocol is in design.</em></p>
+<p>Early unminting will return the VOI deposited to mint dVOI at that rate, regardless of the current dVOI:VOI exchange rate.</p>
+<h2 id="reward-fees"><a class="header" href="#reward-fees">Reward fees</a></h2>
+<p>The platform takes fees on each rewards distribution. The percentage is configurable throughout the lifetime of the contract, and can be seen under the global storage key <code>fee_rate</code>. This value is per-mille (%%) so you can divide by 10 to get the percent fee. The initial value <code>185</code> corresponds to <code>18.5%</code>.</p>
+<p>There are mechanisms in place to protects dVOI users from the operator changing fees abruptly, see <a href="/immutability.html#fee-rate">Immutability - Fee Rate</a>.</p>
+<p>As an example of the allocation of a rewards payment:</p>
+<ul>
+<li>Rewards deposited: 1,000 VOI</li>
+<li>Fee Rate: 18.5% </li>
+<li>Fee purse increase: 185 VOI</li>
+<li>Withdrawable balance increase: 815 VOI
+<ul>
+<li>This balance is the denominator in the dOVI/VOI exchange rate.</li>
+</ul>
+</li>
+</ul>
+<h2 id="execution-of-rewards-distribution"><a class="header" href="#execution-of-rewards-distribution">Execution of rewards distribution</a></h2>
+<p>The contract keeps tracck of the last known balance of its escrow address. It will upodate the withdrawable and fee balances when it is called to mint, burn or update_balances.</p>
+<p>Minting immediately after a rewards distribution - while the contract hasn't updated the tracked balances yet - is supported, and will update the balances and exchange rate before the mint/burn operation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="token-and-contract-info"><a class="header" href="#token-and-contract-info">Token and Contract Info</a></h1>
-<p>TODO</p>
+<p>Testnet token ID: <a href="https://voi.observer/explorer/asset/6543210/transactions">6543210</a></p>
+<p>Testnet App (contract) ID: <a href="https://voi.observer/explorer/application/1337/transactions">1337</a></p>
+<p>Escrow address: <a href="https://voi.observer/explorer/account/DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ/">DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="immutability"><a class="header" href="#immutability">Immutability</a></h1>
+<p>Upon initial launch and during a brief testing period, the contract will be mutable (update/delete) by the admin (D13). This functionality will be gated by the value of a contract global storage field - <code>updatable_by</code>. The contract will be updatable for as long as this value is set.</p>
+<p>After the <code>updatable_by</code> field is cleared, the contract's code will be permanently immutable. Changes to certain configuration values of the contract will still be possible by the <code>fee_admin</code> address and in a controlled manner.</p>
+<p>Configuration changes to the contract will be time-delayed. The fee admin will be able to change the fee rate value, but there will be a time delay of at least 1 week (subject to change) before this change will take effect. Certain values may also have restrictions on the change delta, e.g. the fee rate may only be changed +/- 5% of its current value. As such, the fee admin would not be able to immediately change the fee rate to 100%, which would compromise dVOI holders' rewards.</p>
+<h2 id="fee-rate"><a class="header" href="#fee-rate">Fee Rate</a></h2>
+<p>The fee rate value <code>fee_rate</code> will be mutable with by the <code>fee_admin</code> address with a 1 week delay.</p>
+<p>The updated fee rate value must be within 50 points of the previous one (up to +/- 5% rate change at a time)</p>
+<h2 id="mint-lock-duration"><a class="header" href="#mint-lock-duration">Mint Lock Duration</a></h2>
+<p>The minting process' dVOI lock duration value <code>mint_time_lock</code> will be mutable with by the <code>fee_admin</code> address with a 1 week delay.</p>
+<p>The updated value will not have restrictions.</p>
+<h2 id="fee-admin"><a class="header" href="#fee-admin">Fee admin</a></h2>
+<p>The fee admin address <code>fee_admin</code> will be mutable by the <code>fee_admin</code> with immediate effect.</p>
+<h2 id="changing-scheduled-updates"><a class="header" href="#changing-scheduled-updates">Changing scheduled updates</a></h2>
+<p>If an update is scheduled but not vested yet, updating the scheduled values will reset the update timer to the initial value of 1 week.</p>
+<p>Updates can also be staggered, e.g. the fee rate and the mint time lock values can be part of the same update. The last update value will reset the timer to 1 week, as before.</p>
+<p>The update will not apply automatically. When its timestamp elapsed, it will either be applied by the fee admin by calling the contract, or they will be able to dismiss the change.</p>
+<p>Scheduled updates will be stored as a JSON object in the <code>next_config_update</code> global storage value.</p>
+<p>The structure will include <code>ts</code> for the timestamp after which the configuration can be applies, as well as key and value pairs for the updates to apply.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contract-abi"><a class="header" href="#contract-abi">Contract ABI</a></h1>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="audits"><a class="header" href="#audits">Audits</a></h1>
-<p>TODO</p>
+<p>The dVOI protocol will undergo an audit pending approval of a testnet council proposal for funding.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bug-bountry"><a class="header" href="#bug-bountry">Bug Bountry</a></h1>
-<p>TODO</p>
+<p>The dVOI protocol will offer a bug bounty pending approval of a testnet council proposal for funding.</p>
+<p>The bug bounty program will allocate funds for whitehat hackers responsibly disclosing contract vulnerabilities.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="links"><a class="header" href="#links">Links</a></h1>
-<p>TODO</p>
+<p><a href="https://d.voi.green">Protocol frontend: d.voi.green</a></p>
+<p><a href="https://docs.voi.green">Docs: docs.voi.green</a> ⬅ You are here</p>
+<p>Code: TBD</p>
+<hr />
+<p>For contract and token details see <a href="/info.html">Token and Contract Info</a></p>
+<p>For contact details see <a href="/contact.html">Contact</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contact"><a class="header" href="#contact">Contact</a></h1>
-<p>TODO</p>
+<p>Email: <a href="mailto:d@voi.green">d@voi.green</a></p>
+<p>Twitter: <a href="https://twitter.com/d13_co">@D13_co</a></p>
 
                     </main>
 
