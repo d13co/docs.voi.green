@@ -10,7 +10,7 @@ As rewards are distributed, the VOI corresponding to each circulating dVOI will 
 
 Minting and burning rates are calculated with a formula that maintains the current dVOI/VOI rate. This aims to protect earlier users' accumulated rewards from being diluted by later users.
 
-Aside from rewards distributions, the process of [early unminting](/early-umint.html) may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be clearly visible if unvested dVOI is returned for the original price after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before rewards were distributed.
+Aside from rewards distributions, the process of [early unminting](/early-unmint.html) may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be clearly visible if unvested dVOI is returned for the original price after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before rewards were distributed.
 
 ## Rate formula
 

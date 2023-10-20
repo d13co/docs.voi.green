@@ -175,8 +175,10 @@
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p>dVOI is a token and dApp (soon to be) on the VOI Testnet.</p>
 <p>dVOI will appreciate against VOI via consensus participation rewards.</p>
-<p>Users can stake their VOI on the dVOI smart contract to receive dVOI tokens (pending a dVOI vesting period, currently 1 week - see <a href="/minting.html">Minting</a>)</p>
+<p>Users can stake their VOI on the dVOI smart contract to <a href="/minting.html">mint dVOI tokens</a>.</p>
 <p>dVOI can be <a href="/burning.html">burned</a> back to VOI at any point.</p>
+<p>Read more about <a href="/how-it-works.html">how it works</a>.</p>
+<hr />
 <p>Testnet token ID: <a href="https://voi.observer/explorer/asset/6543210/transactions">6543210</a> </p>
 <p>Testnet App (contract) ID: <a href="https://voi.observer/explorer/application/1337/transactions">1337</a></p>
 <p>Escrow address: <a href="https://voi.observer/explorer/account/DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ/">DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ</a></p>
@@ -223,7 +225,7 @@
 <p>Users who mint dVOI before any rewards are distributed will receive 1 dVOI for each VOI they deposit.</p>
 <p>As rewards are distributed, the VOI corresponding to each circulating dVOI will increase, so the dVOI price in VOI will also increase.</p>
 <p>Minting and burning rates are calculated with a formula that maintains the current dVOI/VOI rate. This aims to protect earlier users' accumulated rewards from being diluted by later users.</p>
-<p>Aside from rewards distributions, the process of <a href="/early-umint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be clearly visible if unvested dVOI is returned for the original price after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before rewards were distributed.</p>
+<p>Aside from rewards distributions, the process of <a href="/early-unmint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be clearly visible if unvested dVOI is returned for the original price after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before rewards were distributed.</p>
 <h2 id="rate-formula"><a class="header" href="#rate-formula">Rate formula</a></h2>
 <p>The formula to calculate the protocol's rate of dVOI:VOI is:</p>
 <p>\[\frac{circulating\ dVOI}{withdrawable\ VOI}  \]</p>
