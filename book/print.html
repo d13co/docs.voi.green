@@ -213,21 +213,29 @@
 <p>Users can only burn tokens they hold in their wallet. Unclaimed vested dVOI must be withdrawn first, and then burnt.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="early-unmint"><a class="header" href="#early-unmint">Early Unmint</a></h1>
 <p>Minted dVOI goes through a 1 week period before it is fully vested, after which it can be withdrawn from the contract and traded freely.</p>
-<p>Users who currently have dVOI in a vesting state will be able to &quot;unmint early&quot;. This will return their initial VOI payment for the dVOI allocation.</p>
+<p>Users who currently have dVOI in a vesting state will be able to &quot;unmint early&quot;. This will return their initial VOI payment in exchange for their allocated dVOI.</p>
 <p><strong>Early unminting forfeits any rewards that may have accumulated during the vesting period.</strong></p>
-<p>Most users will opt to wait, claim their dVOI (or have it sent to them automatically) and then <a href="/burning.html">burn it</a> for an appreciated VOI value at a later stage.</p>
+<p>Most users will opt to wait, claim their dVOI (or have it sent to them automatically) and then <a href="/burning.html">burn it</a> in order to get rewarded for participating in consensus indirectly.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dvoivoi-rate"><a class="header" href="#dvoivoi-rate">dVOI:VOI Rate</a></h1>
 <p>The dVOI:VOI rate starts at 1:1, with:</p>
 <ul>
-<li>all dVOI in the contract (dVOI circulation: 0) </li>
-<li>no VOI balance to &quot;back&quot; the circulating dVOI (withdrawable balance: 0)</li>
+<li>all dVOI in the contract 
+<ul>
+<li>dVOI circulation: 0)</li>
+</ul>
+</li>
+<li>no VOI balance to &quot;back&quot; the circulating dVOI
+<ul>
+<li>withdrawable balance: 0</li>
+</ul>
+</li>
 </ul>
 <p>Users who mint dVOI before any rewards are distributed will receive 1 dVOI for each VOI they deposit.</p>
 <p>As rewards are distributed, the VOI corresponding to each circulating dVOI will increase, so the dVOI price in VOI will also increase.</p>
 <p>Minting and burning rates are calculated with a formula that maintains the current dVOI/VOI rate. This aims to protect earlier users' accumulated rewards from being diluted by later users.</p>
-<p>Aside from rewards distributions, the process of <a href="/early-unmint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be clearly visible if unvested dVOI is returned for the original price after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before rewards were distributed.</p>
+<p>Aside from rewards distributions, the process of <a href="/early-unmint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be apparent if unvested dVOI is early-unminted after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before the rewards distribution.</p>
 <h2 id="rate-formula"><a class="header" href="#rate-formula">Rate formula</a></h2>
-<p>The formula to calculate the protocol's rate of dVOI:VOI is:</p>
+<p>The formula used to calculate the rate of dVOI to VOI is:</p>
 <p>\[\frac{circulating\ dVOI}{withdrawable\ VOI}  \]</p>
 <p>Where: </p>
 <ul>
@@ -255,7 +263,8 @@
 <li>Circulating dVOI: The previous circulating dVOI amount</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fee-structure"><a class="header" href="#fee-structure">Fee Structure</a></h1>
-<p>TODO</p>
+<p>TODO - the rest of the docs are TODO from here on. Thanks for your attention &lt;3</p>
+<p>- D13</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="token-and-contract-info"><a class="header" href="#token-and-contract-info">Token and Contract Info</a></h1>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contract-abi"><a class="header" href="#contract-abi">Contract ABI</a></h1>

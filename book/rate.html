@@ -177,15 +177,23 @@
                         <h1 id="dvoivoi-rate"><a class="header" href="#dvoivoi-rate">dVOI:VOI Rate</a></h1>
 <p>The dVOI:VOI rate starts at 1:1, with:</p>
 <ul>
-<li>all dVOI in the contract (dVOI circulation: 0) </li>
-<li>no VOI balance to &quot;back&quot; the circulating dVOI (withdrawable balance: 0)</li>
+<li>all dVOI in the contract 
+<ul>
+<li>dVOI circulation: 0)</li>
+</ul>
+</li>
+<li>no VOI balance to &quot;back&quot; the circulating dVOI
+<ul>
+<li>withdrawable balance: 0</li>
+</ul>
+</li>
 </ul>
 <p>Users who mint dVOI before any rewards are distributed will receive 1 dVOI for each VOI they deposit.</p>
 <p>As rewards are distributed, the VOI corresponding to each circulating dVOI will increase, so the dVOI price in VOI will also increase.</p>
 <p>Minting and burning rates are calculated with a formula that maintains the current dVOI/VOI rate. This aims to protect earlier users' accumulated rewards from being diluted by later users.</p>
-<p>Aside from rewards distributions, the process of <a href="/early-unmint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be clearly visible if unvested dVOI is returned for the original price after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before rewards were distributed.</p>
+<p>Aside from rewards distributions, the process of <a href="/early-unmint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be apparent if unvested dVOI is early-unminted after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before the rewards distribution.</p>
 <h2 id="rate-formula"><a class="header" href="#rate-formula">Rate formula</a></h2>
-<p>The formula to calculate the protocol's rate of dVOI:VOI is:</p>
+<p>The formula used to calculate the rate of dVOI to VOI is:</p>
 <p>\[\frac{circulating\ dVOI}{withdrawable\ VOI}  \]</p>
 <p>Where: </p>
 <ul>
