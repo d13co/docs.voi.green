@@ -18,6 +18,7 @@
 # Contract Info
 - [Token and Contract Info](./info.md)
 - [Immutability](./immutability.md)
+- [Contract Storage](./storage.md)
 - [Contract ABI](./abi.md)
 
 # Audits & Bug Bounty

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Bug Bountry - dVOI Documentation - docs.voi.green</title>
+        <title>Contract Storage - dVOI Documentation - docs.voi.green</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">4.</strong> Burning</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">5.</strong> Early Unmint</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="rate.html"><strong aria-hidden="true">6.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">7.</strong> Fee Structure</a></li><li class="chapter-item expanded affix "><li class="part-title">Contract Info</li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">8.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="immutability.html"><strong aria-hidden="true">9.</strong> Immutability</a></li><li class="chapter-item expanded "><a href="storage.html"><strong aria-hidden="true">10.</strong> Contract Storage</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">11.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">12.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html" class="active"><strong aria-hidden="true">13.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li><li class="chapter-item expanded "><a href="links.html"><strong aria-hidden="true">14.</strong> Links</a></li><li class="chapter-item expanded "><a href="contact.html"><strong aria-hidden="true">15.</strong> Contact</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">4.</strong> Burning</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">5.</strong> Early Unmint</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="rate.html"><strong aria-hidden="true">6.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">7.</strong> Fee Structure</a></li><li class="chapter-item expanded affix "><li class="part-title">Contract Info</li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">8.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="immutability.html"><strong aria-hidden="true">9.</strong> Immutability</a></li><li class="chapter-item expanded "><a href="storage.html" class="active"><strong aria-hidden="true">10.</strong> Contract Storage</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">11.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">12.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html"><strong aria-hidden="true">13.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li><li class="chapter-item expanded "><a href="links.html"><strong aria-hidden="true">14.</strong> Links</a></li><li class="chapter-item expanded "><a href="contact.html"><strong aria-hidden="true">15.</strong> Contact</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,7 +145,7 @@
                         <a href="https://github.com/d13co/docs.voi.green" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/d13co/docs.voi.green/edit/main/src/bug-bounty.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/d13co/docs.voi.green/edit/main/src/storage.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -174,19 +174,35 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="bug-bountry"><a class="header" href="#bug-bountry">Bug Bountry</a></h1>
-<p>The dVOI protocol will offer a bug bounty pending approval of a testnet council proposal for funding.</p>
-<p>The bug bounty program will allocate funds for whitehat hackers responsibly disclosing contract vulnerabilities.</p>
+                        <h1 id="contract-storage"><a class="header" href="#contract-storage">Contract Storage</a></h1>
+<h2 id="global-storage"><a class="header" href="#global-storage">Global Storage</a></h2>
+<p>The global storage of the dVOI contract stores the following values:</p>
+<div class="table-wrapper"><table><thead><tr><th>field</th><th>type</th><th>description</th></tr></thead><tbody>
+<tr><td>updatable_by</td><td>Byte (address)</td><td>Administrator address field. Power to update the contract code. When empty: the code is immutable. While this is set: the admin can rug.</td></tr>
+<tr><td>fee_admin</td><td>Byte (address)</td><td>Operator address field. Has the power to 1) withdraw collected fees 2) update fee_rate and mint_time_lock parameters (with a <a href="/immutability.html">1 week time lock</a> and 3) change the fee_admin</td></tr>
+<tr><td>next_params_update</td><td>Byte</td><td><a href="/immutability.html">Scheduled time-locked updates</a> of fee_rate and/or mint_time_lock parameters. Structure documented <a href="/immutability.html#changing-scheduled-updates">here</a>.</td></tr>
+<tr><td>fee_rate</td><td>Number</td><td><a href="/fees.html">Fee rate</a> in permille. E.g. 185 means fees of 18.5% on all distributed rewards</td></tr>
+<tr><td>mint_time_lock</td><td>Number</td><td><a href="/minting.html#vesting-period">Mint vesting period</a> in seconds</td></tr>
+<tr><td>init_balance</td><td>Number</td><td>Initial seed balance of contract escrow. 1 VOI. Used to calculate balances and rewards.</td></tr>
+<tr><td>circulating</td><td>Number</td><td>Circulating dVOI (including vesting dVOI). Used in <a href="/rate.html">rate</a> calculations.</td></tr>
+<tr><td>withdrawable_balance</td><td>Number</td><td>VOI balance available to withdraw by burning dVOI. Used in <a href="/rate.html">rate</a> calculations.</td></tr>
+<tr><td>fees_balance</td><td>Number</td><td>Accumulated protocol fees. Withdrawable by &quot;fee admin&quot;.</td></tr>
+<tr><td>last_known_balance</td><td>Number</td><td>The last escrow balance seen by the contract. Used to calculate when rewards have been distributed before a mint or a burn.</td></tr>
+</tbody></table>
+</div>
+<h2 id="box-storage"><a class="header" href="#box-storage">Box Storage</a></h2>
+<p>Boxes are used to store vesting dVOI per user.</p>
+<p>The box name is the user's address. The value is a concatenation of a uint32 timestamp of vesting, and a uint64 amount of VOI paid for the dVOI, which is used for early unmint refunds.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="audits.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="immutability.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="links.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="abi.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -196,11 +212,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="audits.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="immutability.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="links.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="abi.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
