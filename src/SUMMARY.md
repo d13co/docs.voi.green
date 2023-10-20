@@ -7,15 +7,14 @@
 
 # Process
 - [Minting](./minting.md)
-- [Claim vested dVOI](./claim.md)
 - [Early Unmint](./early-unmint.md)
 - [Burning](./burning.md)
 
 # Technical
 
-- [Token and Contract Info](./info.md)
-- [Fee Structure](./fees.md)
 - [dVOI Rate](./rate.md)
+- [Fee Structure](./fees.md)
+- [Token and Contract Info](./info.md)
 - [Contract ABI](./abi.md)
 
 # Audits & Bug Bounty
@@ -23,6 +22,5 @@
 - [Bug Bountry](./bug-bounty.md)
 
 # Misc
-
-[Links](./links.md)
-[Contact](./contact.md)
+- [Links](./links.md)
+- [Contact](./contact.md)

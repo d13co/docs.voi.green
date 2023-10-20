@@ -31,6 +31,8 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -84,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="claim.html"><strong aria-hidden="true">4.</strong> Claim vested dVOI</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">5.</strong> Early Unmint</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">6.</strong> Burning</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">7.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">8.</strong> Fee Structure</a></li><li class="chapter-item expanded "><a href="rate.html"><strong aria-hidden="true">9.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">10.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">11.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html"><strong aria-hidden="true">12.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">4.</strong> Early Unmint</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">5.</strong> Burning</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="rate.html"><strong aria-hidden="true">6.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">7.</strong> Fee Structure</a></li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">8.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">9.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">10.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html"><strong aria-hidden="true">11.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li><li class="chapter-item expanded "><a href="links.html"><strong aria-hidden="true">12.</strong> Links</a></li><li class="chapter-item expanded "><a href="contact.html"><strong aria-hidden="true">13.</strong> Contact</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -175,20 +177,95 @@
 <p>dVOI will appreciate against VOI via consensus participation rewards.</p>
 <p>Users can stake their VOI on the dVOI smart contract to receive dVOI tokens (pending a dVOI vesting period, currently 1 week - see <a href="/minting.html">Minting</a>)</p>
 <p>dVOI can be <a href="/burning.html">burned</a> back to VOI at any point.</p>
-<p>The rate of dVOI to VOI remains constant through minting and burning - the only thing that should change the exchange rate offered by the dVOI contract is disbursement of rewards. This ensures that dVOI holder rewards are not diluted by other users minting or burning dVOI.</p>
 <p>Testnet token ID: <a href="https://voi.observer/explorer/asset/6543210/transactions">6543210</a> </p>
 <p>Testnet App (contract) ID: <a href="https://voi.observer/explorer/application/1337/transactions">1337</a></p>
+<p>Escrow address: <a href="https://voi.observer/explorer/account/DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ/">DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-it-works"><a class="header" href="#how-it-works">How it Works</a></h1>
+<p>The dVOI contract <a href="voi.observer/explorer/account/DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ/">escrow address</a> participates in consensus and receives consensus rewards. Part of those rewards are proportional to the VOI staked. dVOI allows users who are unable to run a node to participate in the consensus rewards of the Voi Testnet network.</p>
+<p>To <a href="/minting.html">mint dVOI</a>, users can delegate their VOI to the contract will be allocated the equivalent dVOI according to the dVOI:VOI rate at the time of minting.</p>
+<p>The allocated dVOI remains locked in the contract for the duration of the dVOI vesting period - 1 week. This mechanism protects the protocol from users dipping in to dVOI before the rewards are distributed, and then burn back to VOI immediately, thus diluting honest users' rewards without participating meaningfully in the online stake that generates those rewards.</p>
+<p>After receiving their dVOI tokens, users can claim their rewards at any time by <a href="/burning.html">burning their dVOI for VOI</a>. Since the vesting period overlaps the consensus participation rewards period, users should always be able to exchange their dVOI for more VOI than they minted it with.</p>
+<p>The rate of dVOI to VOI remains constant through minting and burning - the only thing that should change the exchange rate offered by the dVOI contract is disbursement of rewards. This ensures that dVOI holder rewards are not diluted by other users minting or burning dVOI.</p>
+<p>As such, the rate of dVOI to VOI will start at 1:1 before any consensus rewards are distributed to the dVOI escrow account, and then dVOI will appreciate with each consensus rewards disbursement.</p>
+<p>The mechanism of minting is only way dVOI enters circulation. No dVOI is allocated to &quot;the team&quot;, or any other such back-handed nonsense.</p>
+<p>Minting and burning dVOI does not incur any fees. The protocol takes fees from the distributed rewards.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="minting"><a class="header" href="#minting">Minting</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="claim-vested-dvoi"><a class="header" href="#claim-vested-dvoi">Claim vested dVOI</a></h1>
+<p>Users can mint dVOI by depositiing VOI to the protocol.</p>
+<p>The deposited VOI will be used to participate in the Voi Testnet consensus protocol, and receive rewards.</p>
+<p>Part of the Voi testnet consensus rewards are fixed (node health rewards) and the remaining rewards are proportional to participation in block production, which in turn is proportional to online stake.</p>
+<p>The dVOI token and protocol allows users to get exposure to these rewards, as dVOI will appreciate in value against VOI with each rewards distribution. </p>
+<h2 id="vesting-period"><a class="header" href="#vesting-period">Vesting Period</a></h2>
+<p><strong>Minting dVOI currently has a vesting period of 1 week</strong>, during which the dVOI is allocated to the user but not withdrawable. The exchange rate is fixed at the time of minting, but the dVOI is locked in the contract until the week elapses.</p>
+<h3 id="why"><a class="header" href="#why">Why?</a></h3>
+<p>On the Voi testnet, consensus rewards distributions currently take place weekly at a fixed time (Mondays.) </p>
+<p>As such, a well designed delegation protocol needs a way to ensure that users claiming rewards have contributed meaningfully to the generation of said rewards.</p>
+<p>Without a dVOI vesting period, users could mint dVOI on the day of rewards distribution, wait for rewards to be distributed, and then burn back to VOI. This would be problematic, as they would not contribute to the online stake meaningfully over the week (and thus protocol consensus rewards), but only for a few hours.</p>
+<h2 id="claim-vested-dvoi"><a class="header" href="#claim-vested-dvoi">Claim vested dVOI</a></h2>
+<p>After the vesting period has elapsed, users will be able to claim their dVOI from the contract, or alternatively a backend service will be able to call the contract on their behalf and airdrop their dVOI to their wallet - assuming they remain opted in to dVOI, which will be part of the minting process.</p>
+<p>Note: the vested dVOI will only be sent directly to the user who minted it, regardless of who issues the transaction to the contract - user or a backend service.</p>
+<p>Users who wish to back out of their vesting dVOI will be able to <a href="/early-unmint.html">unmint early</a> and forfeit any rewards.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="early-unmint"><a class="header" href="#early-unmint">Early Unmint</a></h1>
+<p>Minted dVOI goes through a 1 week period before it is fully vested, after which it can be withdrawn from the contract and traded freely.</p>
+<p>Users who currently have dVOI in a vesting state will be able to &quot;unmint early&quot;. This will return their initial VOI payment for the dVOI allocation.</p>
+<p><strong>Early unminting forfeits any rewards that may have accumulated during the vesting period.</strong></p>
+<p>Most users will opt to wait, claim their dVOI (or have it sent to them automatically) and then <a href="/burning.html">burn it</a> for an appreciated VOI value at a later stage.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="burning"><a class="header" href="#burning">Burning</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="token-and-contract-info"><a class="header" href="#token-and-contract-info">Token and Contract Info</a></h1>
+<p>Burning is the process of returning dVOI tokens to the contract and receiving VOI in return.</p>
+<p>Burning, like minting, does not influence the exchange rate of dVOI:VOI - only rewards disbursements and early unminting can do that.</p>
+<p>As dVOI has a 1 week vesting period and the consensus rewards are distributed weekly on Voi, users should always be able to exchange their minted and vested dVOI for more VOI than they originally put in to the system.</p>
+<p>Users can only burn tokens they hold in their wallet. Unclaimed vested dVOI must be withdrawn first, and then burnt.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dvoivoi-rate"><a class="header" href="#dvoivoi-rate">dVOI:VOI Rate</a></h1>
+<p>The dVOI:VOI rate starts at 1:1, with:</p>
+<ul>
+<li>all dVOI in the contract (dVOI circulation: 0) </li>
+<li>no VOI balance to &quot;back&quot; the circulating dVOI (withdrawable balance: 0)</li>
+</ul>
+<p>Users who mint dVOI before any rewards are distributed will receive 1 dVOI for each VOI they deposit.</p>
+<p>As rewards are distributed, the VOI corresponding to each circulating dVOI will increase, so the dVOI price in VOI will also increase.</p>
+<p>Minting and burning rates are calculated with a formula that maintains the current dVOI/VOI rate. This aims to protect earlier users' accumulated rewards from being diluted by later users.</p>
+<p>Aside from rewards distributions, the process of <a href="/early-umint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be clearly visible if unvested dVOI is returned for the original price after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before rewards were distributed.</p>
+<h2 id="rate-formula"><a class="header" href="#rate-formula">Rate formula</a></h2>
+<p>The formula to calculate the protocol's rate of dVOI:VOI is:</p>
+<p>\[\frac{circulating\ dVOI}{withdrawable\ VOI}  \]</p>
+<p>Where: </p>
+<ul>
+<li>&quot;Circulating dVOI&quot; is the amount of vested and unvested dVOI that has been minted.</li>
+<li>&quot;Withdrawable VOI&quot; is the VOI held in the contract that is redeemable to users via burning. It comprises of user VOI deposits, and the rewards distributed to the contract (minus the reward fees that the protocol takes.)</li>
+</ul>
+<h2 id="mint-rate-formula"><a class="header" href="#mint-rate-formula">Mint rate formula</a></h2>
+<p>The formula used to mint new dVOI without affecting the dVOI:VOI rate is:</p>
+<p>\[Minted\ dVOI=\frac{(Withdrawable\ VOI + Deposit) * Circulating\ dVOI}{Withdrawable\ VOI} - Circulating\ dVOI\]</p>
+<p>Where:</p>
+<ul>
+<li>Minted dVOI: The amount of dVOI allocated to the user for their deposit</li>
+<li>Withdrawable VOI: The amount of withdrawable VOI before the user deposit</li>
+<li>Deposit: The amount of VOI the user is sending to mint some dVOI</li>
+<li>Circulating dVOI: The previous circulating dVOI amount</li>
+</ul>
+<h2 id="burn-rate-formula"><a class="header" href="#burn-rate-formula">Burn rate formula</a></h2>
+<p>The VOI returned when burning dVOI is calculated with this formula:</p>
+<p>\[Return\ VOI=Withdrawable\ VOI-\frac{(Circulating\ dVOI - Burned) * Withdrawable\ VOI}{Circulating dVOI}\]</p>
+<p>Where:</p>
+<ul>
+<li>Return VOI: The amount of VOI the user receives for their burn deposit</li>
+<li>Withdrawable VOI: The amount of withdrawable VOI before the dVOI burn</li>
+<li>Burned: The amount of dVOI the user is burning/exchanging VOI</li>
+<li>Circulating dVOI: The previous circulating dVOI amount</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fee-structure"><a class="header" href="#fee-structure">Fee Structure</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="dvoi-rate"><a class="header" href="#dvoi-rate">dVOI Rate</a></h1>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="token-and-contract-info"><a class="header" href="#token-and-contract-info">Token and Contract Info</a></h1>
+<p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contract-abi"><a class="header" href="#contract-abi">Contract ABI</a></h1>
+<p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="audits"><a class="header" href="#audits">Audits</a></h1>
+<p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bug-bountry"><a class="header" href="#bug-bountry">Bug Bountry</a></h1>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="links"><a class="header" href="#links">Links</a></h1>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contact"><a class="header" href="#contact">Contact</a></h1>
+<p>TODO</p>
 
                     </main>
 
@@ -227,7 +304,9 @@
 
         <script>
         window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
         });
         </script>
 

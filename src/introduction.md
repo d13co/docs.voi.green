@@ -8,10 +8,8 @@ Users can stake their VOI on the dVOI smart contract to receive dVOI tokens (pen
 
 dVOI can be [burned](/burning.html) back to VOI at any point.
 
-The rate of dVOI to VOI remains constant through minting and burning - the only thing that should change the exchange rate offered by the dVOI contract is disbursement of rewards. This ensures that dVOI holder rewards are not diluted by other users minting or burning dVOI.
-
 Testnet token ID: [6543210](https://voi.observer/explorer/asset/6543210/transactions) 
 
 Testnet App (contract) ID: [1337](https://voi.observer/explorer/application/1337/transactions)
 
-
+Escrow address: [DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ](https://voi.observer/explorer/account/DELEGATEDW322SS7PBDKGZ6WCMU5NE2MC33KO4JX252SNUQNC7U5J5ZSOQ/)

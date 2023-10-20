@@ -30,6 +30,8 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -83,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="claim.html"><strong aria-hidden="true">4.</strong> Claim vested dVOI</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">5.</strong> Early Unmint</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">6.</strong> Burning</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">7.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">8.</strong> Fee Structure</a></li><li class="chapter-item expanded "><a href="rate.html" class="active"><strong aria-hidden="true">9.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">10.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">11.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html"><strong aria-hidden="true">12.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">4.</strong> Early Unmint</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">5.</strong> Burning</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="rate.html" class="active"><strong aria-hidden="true">6.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">7.</strong> Fee Structure</a></li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">8.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">9.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">10.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html"><strong aria-hidden="true">11.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li><li class="chapter-item expanded "><a href="links.html"><strong aria-hidden="true">12.</strong> Links</a></li><li class="chapter-item expanded "><a href="contact.html"><strong aria-hidden="true">13.</strong> Contact</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -172,17 +174,54 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="dvoi-rate"><a class="header" href="#dvoi-rate">dVOI Rate</a></h1>
+                        <h1 id="dvoivoi-rate"><a class="header" href="#dvoivoi-rate">dVOI:VOI Rate</a></h1>
+<p>The dVOI:VOI rate starts at 1:1, with:</p>
+<ul>
+<li>all dVOI in the contract (dVOI circulation: 0) </li>
+<li>no VOI balance to &quot;back&quot; the circulating dVOI (withdrawable balance: 0)</li>
+</ul>
+<p>Users who mint dVOI before any rewards are distributed will receive 1 dVOI for each VOI they deposit.</p>
+<p>As rewards are distributed, the VOI corresponding to each circulating dVOI will increase, so the dVOI price in VOI will also increase.</p>
+<p>Minting and burning rates are calculated with a formula that maintains the current dVOI/VOI rate. This aims to protect earlier users' accumulated rewards from being diluted by later users.</p>
+<p>Aside from rewards distributions, the process of <a href="/early-umint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be clearly visible if unvested dVOI is returned for the original price after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before rewards were distributed.</p>
+<h2 id="rate-formula"><a class="header" href="#rate-formula">Rate formula</a></h2>
+<p>The formula to calculate the protocol's rate of dVOI:VOI is:</p>
+<p>\[\frac{circulating\ dVOI}{withdrawable\ VOI}  \]</p>
+<p>Where: </p>
+<ul>
+<li>&quot;Circulating dVOI&quot; is the amount of vested and unvested dVOI that has been minted.</li>
+<li>&quot;Withdrawable VOI&quot; is the VOI held in the contract that is redeemable to users via burning. It comprises of user VOI deposits, and the rewards distributed to the contract (minus the reward fees that the protocol takes.)</li>
+</ul>
+<h2 id="mint-rate-formula"><a class="header" href="#mint-rate-formula">Mint rate formula</a></h2>
+<p>The formula used to mint new dVOI without affecting the dVOI:VOI rate is:</p>
+<p>\[Minted\ dVOI=\frac{(Withdrawable\ VOI + Deposit) * Circulating\ dVOI}{Withdrawable\ VOI} - Circulating\ dVOI\]</p>
+<p>Where:</p>
+<ul>
+<li>Minted dVOI: The amount of dVOI allocated to the user for their deposit</li>
+<li>Withdrawable VOI: The amount of withdrawable VOI before the user deposit</li>
+<li>Deposit: The amount of VOI the user is sending to mint some dVOI</li>
+<li>Circulating dVOI: The previous circulating dVOI amount</li>
+</ul>
+<h2 id="burn-rate-formula"><a class="header" href="#burn-rate-formula">Burn rate formula</a></h2>
+<p>The VOI returned when burning dVOI is calculated with this formula:</p>
+<p>\[Return\ VOI=Withdrawable\ VOI-\frac{(Circulating\ dVOI - Burned) * Withdrawable\ VOI}{Circulating dVOI}\]</p>
+<p>Where:</p>
+<ul>
+<li>Return VOI: The amount of VOI the user receives for their burn deposit</li>
+<li>Withdrawable VOI: The amount of withdrawable VOI before the dVOI burn</li>
+<li>Burned: The amount of dVOI the user is burning/exchanging VOI</li>
+<li>Circulating dVOI: The previous circulating dVOI amount</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="fees.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="burning.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="abi.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="fees.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -192,11 +231,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="fees.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="burning.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="abi.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="fees.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
