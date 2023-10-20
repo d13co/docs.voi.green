@@ -42,7 +42,7 @@ Where:
 
 The VOI returned when burning dVOI is calculated with this formula:
 
-\\[Return\ VOI=Withdrawable\ VOI-\frac{(Circulating\ dVOI - Burned) * Withdrawable\ VOI}{Circulating dVOI}\\]
+\\[Return\ VOI=Withdrawable\ VOI-\frac{(Circulating\ dVOI - Burned) * Withdrawable\ VOI}{Circulating\ dVOI}\\]
 
 Where:
 
