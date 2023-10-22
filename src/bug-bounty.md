@@ -1,4 +1,4 @@
-# Bug Bountry
+# Bug Bounty
 
 The dVOI protocol will offer a bug bounty pending approval of a testnet council proposal for funding.
 
