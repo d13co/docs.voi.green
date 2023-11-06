@@ -337,7 +337,248 @@
 <li>uint64 and a uint64 amount of VOI paid. Used for early unmint refunds.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contract-abi"><a class="header" href="#contract-abi">Contract ABI</a></h1>
-<p>TODO</p>
+<p><a href="./contract.json">Download</a></p>
+<pre><code>{
+  &quot;name&quot;: &quot;dVOI Contract&quot;,
+  &quot;methods&quot;: [
+    {
+      &quot;name&quot;: &quot;register_online&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;address&quot;,
+          &quot;name&quot;: &quot;address&quot;
+        },
+        {
+          &quot;type&quot;: &quot;byte[]&quot;,
+          &quot;name&quot;: &quot;selection_key&quot;
+        },
+        {
+          &quot;type&quot;: &quot;byte[]&quot;,
+          &quot;name&quot;: &quot;voting_key&quot;
+        },
+        {
+          &quot;type&quot;: &quot;byte[]&quot;,
+          &quot;name&quot;: &quot;sp_key&quot;
+        },
+        {
+          &quot;type&quot;: &quot;uint64&quot;,
+          &quot;name&quot;: &quot;first_round&quot;
+        },
+        {
+          &quot;type&quot;: &quot;uint64&quot;,
+          &quot;name&quot;: &quot;last_round&quot;
+        },
+        {
+          &quot;type&quot;: &quot;uint64&quot;,
+          &quot;name&quot;: &quot;key_dilution&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Fee admin method to send keyreg online for an escrow account&quot;
+    },
+    {
+      &quot;name&quot;: &quot;register_offline&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;address&quot;,
+          &quot;name&quot;: &quot;address&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Fee admin method to send keyreg offline for an escrow account&quot;
+    },
+    {
+      &quot;name&quot;: &quot;queue_update_fee_rate&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;uint16&quot;,
+          &quot;name&quot;: &quot;new_rate&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Fee admin method. Scheudles an update of the fee rate. Changes enforced to +/- 5% delta max&quot;
+    },
+    {
+      &quot;name&quot;: &quot;queue_update_mint_lock&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;uint32&quot;,
+          &quot;name&quot;: &quot;new_lock&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Fee admin method. Scheudles an update of the mint lock period&quot;
+    },
+    {
+      &quot;name&quot;: &quot;apply_update&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Public. Apply a time-delayed updated after the timestamp has elapsed.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;discard_update&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Cancel a scheudled params update&quot;
+    },
+    {
+      &quot;name&quot;: &quot;update_fee_admin&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;address&quot;,
+          &quot;name&quot;: &quot;new_admin&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Change the fee admin. Admin or fee admins only&quot;
+    },
+    {
+      &quot;name&quot;: &quot;update_arbitrary_bytes&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;byte[]&quot;,
+          &quot;name&quot;: &quot;key&quot;
+        },
+        {
+          &quot;type&quot;: &quot;byte[]&quot;,
+          &quot;name&quot;: &quot;value&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;While updatable only. Update byte storage&quot;
+    },
+    {
+      &quot;name&quot;: &quot;update_arbitrary_uint64&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;byte[]&quot;,
+          &quot;name&quot;: &quot;key&quot;
+        },
+        {
+          &quot;type&quot;: &quot;uint64&quot;,
+          &quot;name&quot;: &quot;value&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;While updatable only. Update uint storage&quot;
+    },
+    {
+      &quot;name&quot;: &quot;update_updatable_by&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;byte[]&quot;,
+          &quot;name&quot;: &quot;new_updater&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;While updatable only. Change or remove admin (updatable_by)&quot;
+    },
+    {
+      &quot;name&quot;: &quot;init_storage&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Admin method to init storage. this will be needed as I am reusing an existing app&quot;
+    },
+    {
+      &quot;name&quot;: &quot;mint_dvoi&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Public method. Mint dvoi (with time lock)\nprevious transaction in group must be payment in VOI recalculates fees/rate if the balance had changed before the payment rate must be kept stable during mint/burn dvoi will be allocated to the user in a box for the duration LOCK_PERIOD (1 week in prod)&quot;
+    },
+    {
+      &quot;name&quot;: &quot;burn_dvoi&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Public method. Swaps dVOI for VOI at the current rate. Previous transaction in group must be payment in dVOI,&quot;
+    },
+    {
+      &quot;name&quot;: &quot;nullun&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Public empty method for opcode budget increase&quot;
+    },
+    {
+      &quot;name&quot;: &quot;withdraw_fees&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;uint64&quot;,
+          &quot;name&quot;: &quot;amount&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;fee admin method to withdraw accumulated fees&quot;
+    },
+    {
+      &quot;name&quot;: &quot;claim_dvoi&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Claim dVOI after the lock period has elapsed.\nSent to the first foreign account ref, so it can be called by anyone. Sends all vested dVOI. Unvested dVOI rewritten to box if needed&quot;
+    },
+    {
+      &quot;name&quot;: &quot;undo_mint_dvoi&quot;,
+      &quot;args&quot;: [
+        {
+          &quot;type&quot;: &quot;uint64&quot;,
+          &quot;name&quot;: &quot;ts&quot;
+        }
+      ],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Public. Undo dvoi minting &amp; receive back the voi paid. Used when dVOi is not yet vested.\nAccepts timestamp of voi mint. This method can influence the dVOI/VOI rate favorably to dVOI holders (if rewards have dropped since mint)&quot;
+    },
+    {
+      &quot;name&quot;: &quot;update_balances&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;void&quot;
+      },
+      &quot;desc&quot;: &quot;Public method to recalculate balances after rewards are received&quot;
+    },
+    {
+      &quot;name&quot;: &quot;update_balances_get_rate&quot;,
+      &quot;args&quot;: [],
+      &quot;returns&quot;: {
+        &quot;type&quot;: &quot;uint64&quot;
+      },
+      &quot;desc&quot;: &quot;Public method to update balance and return rate. For contract-to-contract calls.&quot;
+    }
+  ],
+  &quot;networks&quot;: {}
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="audits"><a class="header" href="#audits">Audits</a></h1>
 <p>The dVOI protocol will undergo an audit pending approval of a testnet council proposal for funding.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bug-bounty"><a class="header" href="#bug-bounty">Bug Bounty</a></h1>
