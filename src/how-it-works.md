@@ -12,6 +12,6 @@ The rate of dVOI to VOI remains constant through minting and burning - the only 
 
 The rate of dVOI to VOI will start at 1:1 before any consensus rewards are distributed to the dVOI escrow account, and then dVOI will appreciate with each rewards disbursement.
 
-The mechanism of minting is only way dVOI enters circulation. No dVOI is allocated to "the team", or any other such back-handed nonsense.
+The mechanism of minting is the only way dVOI enters circulation. No dVOI is allocated to "the team", or any other such back-handed nonsense.
 
 Minting and burning dVOI does not incur any fees. The protocol takes a percentage fee from the distributed rewards.

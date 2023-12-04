@@ -2,7 +2,7 @@
 
 The dVOI:VOI rate starts at 1:1, with:
 - all dVOI in the contract 
-  - dVOI circulation: 0)
+  - dVOI circulation: 0
 - no VOI balance to "back" the circulating dVOI
   - withdrawable balance: 0
 
@@ -17,13 +17,13 @@ Aside from rewards distributions, the process of [early unminting](/early-unmint
 ## Rate formula
 
 The formula used to calculate the rate of dVOI to VOI is:
-
+m
 \\[\frac{Circulating\ dVOI}{Withdrawable\ VOI}\\]
 
 Where: 
 
-- "Circulating dVOI" is the amount of vested and unvested dVOI that has been minted.
-- "Withdrawable VOI" is the VOI held in the contract that is redeemable to users via burning. It comprises of user VOI deposits, and the rewards distributed to the contract (minus the reward fees that the protocol takes.)
+- "Circulating dVOI" is the total amount of minted dVOI (both vested and unvested.)
+- "Withdrawable VOI" is the VOI held in the contract that is redeemable to users via burning. It comprises of user VOI deposits, and the rewards distributed to the contract (minus the fees that the protocol subtracts from each rewards distribution.)
 
 ## Mint rate formula
 

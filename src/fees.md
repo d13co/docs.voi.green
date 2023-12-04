@@ -8,7 +8,7 @@ The mint and burn rates will be at the dVOI/VOI rate at the time of transaction 
 
 *Note: This is subject to change while the protocol is in design.*
 
-Early unminting will return the VOI deposited to mint dVOI at that rate, regardless of the current dVOI:VOI exchange rate.
+Early unminting will refund the exact amount of VOI deposited to mint dVOI (regardless of the current dVOI:VOI exchange rate.)
 
 ## Reward fees
 

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js ayu">
+<html lang="en" class="ayu" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -33,7 +33,7 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -63,31 +63,38 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('ayu')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">dVOI Documentation</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="how-it-works.html"><strong aria-hidden="true">2.</strong> How it Works</a></li><li class="chapter-item expanded affix "><li class="part-title">Process</li><li class="chapter-item expanded "><a href="minting.html"><strong aria-hidden="true">3.</strong> Minting</a></li><li class="chapter-item expanded "><a href="burning.html"><strong aria-hidden="true">4.</strong> Burning</a></li><li class="chapter-item expanded "><a href="early-unmint.html"><strong aria-hidden="true">5.</strong> Early Unmint</a></li><li class="chapter-item expanded affix "><li class="part-title">Technical</li><li class="chapter-item expanded "><a href="rate.html" class="active"><strong aria-hidden="true">6.</strong> dVOI Rate</a></li><li class="chapter-item expanded "><a href="fees.html"><strong aria-hidden="true">7.</strong> Fee Structure</a></li><li class="chapter-item expanded affix "><li class="part-title">Contract Info</li><li class="chapter-item expanded "><a href="info.html"><strong aria-hidden="true">8.</strong> Token and Contract Info</a></li><li class="chapter-item expanded "><a href="immutability.html"><strong aria-hidden="true">9.</strong> Immutability</a></li><li class="chapter-item expanded "><a href="storage.html"><strong aria-hidden="true">10.</strong> Contract Storage</a></li><li class="chapter-item expanded "><a href="abi.html"><strong aria-hidden="true">11.</strong> Contract ABI</a></li><li class="chapter-item expanded affix "><li class="part-title">Audits & Bug Bounty</li><li class="chapter-item expanded "><a href="audits.html"><strong aria-hidden="true">12.</strong> Audits</a></li><li class="chapter-item expanded "><a href="bug-bounty.html"><strong aria-hidden="true">13.</strong> Bug Bountry</a></li><li class="chapter-item expanded affix "><li class="part-title">Misc</li><li class="chapter-item expanded "><a href="links.html"><strong aria-hidden="true">14.</strong> Links</a></li><li class="chapter-item expanded "><a href="contact.html"><strong aria-hidden="true">15.</strong> Contact</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
 
         <!-- Track and set sidebar scroll position -->
@@ -118,9 +125,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -179,7 +186,7 @@
 <ul>
 <li>all dVOI in the contract 
 <ul>
-<li>dVOI circulation: 0)</li>
+<li>dVOI circulation: 0</li>
 </ul>
 </li>
 <li>no VOI balance to &quot;back&quot; the circulating dVOI
@@ -193,12 +200,13 @@
 <p>Minting and burning rates are calculated with a formula that maintains the current dVOI/VOI rate. This aims to protect earlier users' accumulated rewards from being diluted by later users.</p>
 <p>Aside from rewards distributions, the process of <a href="/early-unmint.html">early unminting</a> may also affect the dVOI:VOI rate (in dVOI holders' favor). This would be apparent if unvested dVOI is early-unminted after rewards have been distributed, or more subtly if the unvested dVOI contributed to increased block production during its tenure in the escrow account but unminted before the rewards distribution.</p>
 <h2 id="rate-formula"><a class="header" href="#rate-formula">Rate formula</a></h2>
-<p>The formula used to calculate the rate of dVOI to VOI is:</p>
-<p>\[\frac{Circulating\ dVOI}{Withdrawable\ VOI}\]</p>
+<p>The formula used to calculate the rate of dVOI to VOI is:
+m
+\[\frac{Circulating\ dVOI}{Withdrawable\ VOI}\]</p>
 <p>Where: </p>
 <ul>
-<li>&quot;Circulating dVOI&quot; is the amount of vested and unvested dVOI that has been minted.</li>
-<li>&quot;Withdrawable VOI&quot; is the VOI held in the contract that is redeemable to users via burning. It comprises of user VOI deposits, and the rewards distributed to the contract (minus the reward fees that the protocol takes.)</li>
+<li>&quot;Circulating dVOI&quot; is the total amount of minted dVOI (both vested and unvested.)</li>
+<li>&quot;Withdrawable VOI&quot; is the VOI held in the contract that is redeemable to users via burning. It comprises of user VOI deposits, and the rewards distributed to the contract (minus the fees that the protocol subtracts from each rewards distribution.)</li>
 </ul>
 <h2 id="mint-rate-formula"><a class="header" href="#mint-rate-formula">Mint rate formula</a></h2>
 <p>The formula used to mint new dVOI without affecting the dVOI:VOI rate is:</p>
@@ -229,7 +237,7 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="fees.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="fees.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -243,7 +251,7 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="fees.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="fees.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

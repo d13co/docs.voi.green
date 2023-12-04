@@ -23,6 +23,6 @@ Boxes are used to store users' vesting dVOI.
 
 The box name is the user's address. The value is a concatenation of:
 
-- uint32 vesting timestamp
-- uint64 dVOI amount
-- uint64 and a uint64 amount of VOI paid. Used for early unmint refunds.
+- [uint32] vesting timestamp
+- [uint64] dVOI amount
+- [uint64] amount of VOI paid. Used for early unmint refunds.
